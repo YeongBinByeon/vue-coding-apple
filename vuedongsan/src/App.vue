@@ -1,10 +1,14 @@
 <template>
-  <Modal
-    @closeModal="모달창열렸니 = false"
-    :원룸들="원룸들"
-    :누른거="누른거"
-    :모달창열렸니="모달창열렸니"
-  ></Modal>
+  <!-- <div class="start" :class="{ end: 모달창열렸니 }"> -->
+  <transition name="fade">
+    <Modal
+      @closeModal="모달창열렸니 = false"
+      :원룸들="원룸들"
+      :누른거="누른거"
+      :모달창열렸니="모달창열렸니"
+    ></Modal>
+  </transition>
+  <!-- </div> -->
   <Discount></Discount>
 
   <div class="menu">
@@ -55,6 +59,35 @@ export default {
 </script>
 
 <style>
+.fade-enter-from {
+  transform: translateY(-1000px);
+}
+.fade-enter-active {
+  transition: all 1s;
+}
+.fade-enter-to {
+  transform: translateY(0px);
+}
+
+.fade-leave-from {
+  opacity: 1;
+}
+.fade-leave-active {
+  transition: all 1s;
+}
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* .start {
+  opacity: 0;
+  transition: all 1s;
+}
+
+.end {
+  opacity: 1;
+} */
+
 body {
   margin: 0;
 }
