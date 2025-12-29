@@ -11,6 +11,9 @@
   <!-- </div> -->
   <Discount></Discount>
 
+  <button @click="priceSort">가격순정렬</button>
+  <button @click="sortBack">되돌리기</button>
+
   <div class="menu">
     <a v-for="(a, i) in 메뉴들" :key="i">{{ a }}</a>
   </div>
@@ -37,6 +40,7 @@ export default {
   name: "App",
   data() {
     return {
+      원룸들오리지널: [...data],
       누른거: 0,
       원룸들: data,
       모달창열렸니: false,
@@ -48,6 +52,15 @@ export default {
   methods: {
     increase(i) {
       this.신고수[i] += 1;
+    },
+    sortBack() {
+      this.원룸들 = [...this.원룸들오리지널];
+    },
+    priceSort() {
+      this.원룸들.sort(function (a, b) {
+        // return b.price - a.price; // 내림차순 정렬
+        return a.price - b.price; // 오름차순 정렬
+      });
     },
   },
   components: {
