@@ -9,7 +9,7 @@
     ></Modal>
   </transition>
   <!-- </div> -->
-  <Discount></Discount>
+  <Discount v-if="showDiscount === true"></Discount>
 
   <button @click="priceSort">가격순정렬</button>
   <button @click="sortBack">되돌리기</button>
@@ -40,6 +40,7 @@ export default {
   name: "App",
   data() {
     return {
+      showDiscount: true,
       원룸들오리지널: [...data],
       누른거: 0,
       원룸들: data,
@@ -63,6 +64,11 @@ export default {
       });
     },
   },
+
+  // mounted(){
+  //   setTimeout(()=>{this.showDiscount = false;}, 2000);
+  // },
+
   components: {
     Discount: Discount,
     Modal: Modal,

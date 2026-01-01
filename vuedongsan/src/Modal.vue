@@ -36,6 +36,12 @@ export default {
       this.$emit("closeModal");
     },
   },
+
+  updated() {
+    if (this.month === 2) {
+      alert("2는 입력 안됨");
+    }
+  },
 };
 </script>
 
