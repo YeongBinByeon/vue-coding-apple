@@ -28,7 +28,11 @@
   <!-- <router-view :item="블로그글[0]" :index="0"></router-view> -->
    <router-link to="/">홈페이지</router-link>
    <router-link to="/list">리스트페이지</router-link>
-  <router-view v-for="(item, i) in 블로그글" :key="i" :item="item" :index="i"></router-view>
+   <div class="mt-4">
+      <router-view  :item="블로그글[$route.params.id]"></router-view>
+      <!-- <router-view v-for="(item, i) in 블로그글" :key="i" :item="item" :index="i"></router-view> -->
+    </div>
+  
 
   <!-- <List v-for="(item, i) in 블로그글" :key="i" :item="item" :index="i"/> -->
 </template>

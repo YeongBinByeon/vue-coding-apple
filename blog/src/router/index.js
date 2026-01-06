@@ -13,9 +13,14 @@ const routes = [
     component: Home,
   },
   {
-    path: '/detail',
+    path: '/detail/:id(\\d+)',
     component: Detail,
   },
+  // {
+  //   path: '/:anything(.*)',
+  //   component: Home,
+  // },
+  ,
 ]
 
 const router = createRouter({
