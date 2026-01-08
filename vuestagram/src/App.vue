@@ -9,12 +9,18 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :게시물="게시물" />
+  <Container :게시물="게시물" :step="step" />
   <button @click="more">더보기</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
-      <input type="file" id="file" class="inputfile" />
+      <input
+        @change="upload"
+        accept="image/*"
+        type="file"
+        id="file"
+        class="inputfile"
+      />
       <label for="file" class="input-plus">+</label>
     </ul>
   </div>
@@ -29,7 +35,7 @@ axios.get();
 export default {
   name: "App",
   data() {
-    return { 게시물: postdata, 더보기: 0 };
+    return { 게시물: postdata, 더보기: 0, step: 0 };
   },
   components: {
     Container: Container,
@@ -42,6 +48,13 @@ export default {
           this.게시물.push(결과.data);
           this.더보기++;
         });
+    },
+    upload(e) {
+      let 파일 = e.target.files;
+      console.log(파일[0]);
+      let url = URL.createObjectURL(파일[0]);
+      console.log(url);
+      this.step++;
     },
   },
 };
