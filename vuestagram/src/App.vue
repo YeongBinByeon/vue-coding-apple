@@ -11,7 +11,7 @@
   </div>
 
   <Container
-    @textarea="본문 = $event"
+    @write="작성한글 = $event"
     :이미지="이미지"
     :게시물="게시물"
     :step="step"
@@ -41,7 +41,7 @@ axios.get();
 export default {
   name: "App",
   data() {
-    return { 게시물: postdata, 더보기: 0, step: 0, 이미지: "", 본문: "" };
+    return { 게시물: postdata, 더보기: 0, step: 0, 이미지: "", 작성한글: "" };
   },
   components: {
     Container: Container,
@@ -55,7 +55,7 @@ export default {
         likes: 20,
         date: "Apr 20",
         liked: false,
-        content: this.본문,
+        content: this.작성한글,
         filter: "clarendon",
       };
       this.게시물.unshift(내게시물);
