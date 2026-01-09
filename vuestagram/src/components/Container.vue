@@ -8,6 +8,7 @@
     <div v-if="step == 1">
       <div
         class="upload-image"
+        :class="선택한필터"
         :style="`background-image:url(${이미지})`"
       ></div>
       <div class="filters">
@@ -16,13 +17,15 @@
           v-for="필터 in 필터들"
           :key="필터"
           :필터="필터"
-        ><template v-slot:a>{{필터}}</template></FilterBox>
+          ><template v-slot:a>{{ 필터 }}</template></FilterBox
+        >
       </div>
     </div>
 
     <!-- 글작성페이지 -->
     <div v-if="step == 2">
       <div
+        :class="선택한필터"
         class="upload-image"
         :style="`background-image:url(${이미지})`"
       ></div>
@@ -53,8 +56,14 @@ export default {
     이미지: String,
   },
   methods: {},
+  mounted() {
+    this.emitter.on("박스클릭함", (a) => {
+      this.선택한필터 = a;
+    });
+  },
   data() {
     return {
+      선택한필터: "",
       필터들: [
         "aden",
         "_1977",

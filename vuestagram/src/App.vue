@@ -10,6 +10,8 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
+  <h4>안녕 {{ $store.state.name}}</h4>
+  
   <Container
     @write="작성한글 = $event"
     :이미지="이미지"
@@ -41,8 +43,22 @@ axios.get();
 export default {
   name: "App",
   data() {
-    return { 게시물: postdata, 더보기: 0, step: 0, 이미지: "", 작성한글: "" };
+    return {
+      게시물: postdata,
+      더보기: 0,
+      step: 0,
+      이미지: "",
+      작성한글: "",
+      선택한필터: "",
+    };
   },
+  mounted() {
+    this.emitter.on("박스클릭함", (a) => {
+      console.log(a);
+      this.선택한필터 = a;
+    });
+  },
+
   components: {
     Container: Container,
   },
@@ -56,7 +72,7 @@ export default {
         date: "Apr 20",
         liked: false,
         content: this.작성한글,
-        filter: "clarendon",
+        filter: this.선택한필터,
       };
       this.게시물.unshift(내게시물);
       this.step = 0;
