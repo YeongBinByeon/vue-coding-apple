@@ -3,7 +3,8 @@
     :class="필터"
     class="filter-item"
     :style="`background-image:url(${이미지})`"
-  ></div>
+  >
+  <slot name='a'></slot></div>
 </template>
 
 <script>

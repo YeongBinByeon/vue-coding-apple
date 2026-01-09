@@ -16,7 +16,7 @@
           v-for="필터 in 필터들"
           :key="필터"
           :필터="필터"
-        ></FilterBox>
+        ><template v-slot:a>{{필터}}</template></FilterBox>
       </div>
     </div>
 
