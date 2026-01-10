@@ -1,4 +1,5 @@
 import { createStore } from "vuex";
+import axios from "axios";
 
 const store = createStore({
   state() {
@@ -7,6 +8,7 @@ const store = createStore({
       age: 20,
       likes: 30,
       좋아요눌렀니: false,
+      more: {},
     };
   },
   mutations: {
@@ -24,6 +26,18 @@ const store = createStore({
     },
     증가(state, data) {
       state.age += data;
+    },
+    setMore(state, data){
+state.more = data
+    }
+  },
+
+  actions: {
+    getData(context) { // context는 대충 $store를 뜻함
+      axios.get(`https://codingapple1.github.io/vue/more0.json`).then((a) => {
+        console.log(a.data);
+        context.commit('setMore', a.data)
+      });
     },
   },
 });
