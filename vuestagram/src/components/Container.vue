@@ -38,17 +38,23 @@ write!</textarea
         >
       </div>
     </div>
+
+    <div v-if="step == 3">
+      <MyPage :one="1" />
+    </div>
   </div>
 </template>
 
 <script>
 import Post from "./Post.vue";
 import FilterBox from "./FilterBox.vue";
+import MyPage from "./MyPage.vue";
 
 export default {
   components: {
     Post: Post,
     FilterBox: FilterBox,
+    MyPage: MyPage,
   },
   props: {
     게시물: Array,
